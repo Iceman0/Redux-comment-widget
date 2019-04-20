@@ -7,9 +7,8 @@ import {createStore} from 'redux';
 import { Provider } from 'react-redux';
 import comments from './reducers';
 
-const initialState = {};
 
-const store = createStore(comments, initialState);
+const store = createStore(comments);
 
 ReactDOM.render(
     <Provider store={store}>
