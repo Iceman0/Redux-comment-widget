@@ -1,33 +1,14 @@
 import React from 'react';
+import {getDateComment, validateComment} from "../utils";
 
 const AddComment = (props) => {
     const {handleAuthor, handleComment, addComment} = props;
 
-    const getDateComment = () => {
-        let time = new Date().toLocaleString("ru", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-            hour: "numeric",
-            minute: "numeric",
-            second: "numeric"
-        });
-
-        return time;
-    };
-
-    const validateComment = () => {
-        if (props.author !== "" && props.comment !== "") {
-            return true;
-        } else {
-            alert("Введите все данные (комментарий и автор)");
-        }
-    };
-
     return (
         <form onSubmit={
             (ev) => {
-                if (validateComment()) {
+                ev.preventDefault();
+                if (validateComment(props)) {
                     let comment = {
                         id: '_' + Math.random().toString(36).substr(2, 9),
                         author: props.author,

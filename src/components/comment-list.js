@@ -2,6 +2,8 @@ import React from 'react';
 
 const CommentList = (props) => {
     const {commentList, deleteComment} = props;
+
+    localStorage.setItem('content', JSON.stringify(commentList.comments));
     return (
         <ol id="ol">
             {commentList.comments.map((comment) => {

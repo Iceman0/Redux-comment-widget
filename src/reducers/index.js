@@ -18,7 +18,9 @@ const formReducer = (state = initialState, action) => {
             };
 
         default:
-            return  state;
+            return {
+                state, comment: "", author: ""
+            };
 
     }
 };
@@ -29,7 +31,6 @@ const commentsReducer = (state = initialState, action) => {
             return state;
         case 'ADD_COMMENT':
             const allComments = [...state.comments, action.comment];
-            localStorage.setItem('content', JSON.stringify(allComments));
             return { ...state,comments:allComments};
         case 'DELETE_COMMENT':
             const updateList = {
